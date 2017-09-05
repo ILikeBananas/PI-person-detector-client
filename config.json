@@ -1,3 +1,4 @@
 {
-  "server": "http://localhost:80"
+  "server": "http://localhost:80",
+  "piName": "tester"
 }
