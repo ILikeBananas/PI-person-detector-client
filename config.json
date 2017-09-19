@@ -1,4 +1,6 @@
 {
   "server": "http://localhost:80",
-  "name": "tester"
+  "name": "tester",
+  "volume": 5,
+  "soundFilePath" : "/"
 }

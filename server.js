@@ -1,13 +1,18 @@
 const io = require('socket.io-client')
 const config = require('./config.json')
 const socket = io.connect(config.server, {reconnect: true})
+const Config = require('./Config')
+let rpi = new Config(config)
 
 socket.on('connect', () => {
-  console.log('Client : Connected')
-  test()
+    console.log('Client : Connected')
+    socket.emit('raspberryPI', {name : rpi.name})
 })
-function test() {
-  console.log('enter test function')
-  socket.emit('raspberryPI', {name : config.name})
-  console.log('test function ended')
-}
+
+socket.on('new config', (config) => {
+    console.log('new config')
+})
+
+socket.on('new volume', (info) => {
+    rpi.setVolume(info.volume)
+})
